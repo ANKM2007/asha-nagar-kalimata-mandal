@@ -30,7 +30,14 @@
       <div class="section-card invite-wrap">
         <h2>Invitation</h2>
         <p class="muted">Join us in celebrating Maa Kali Puja with devotion, culture and togetherness.</p>
-                <img class="invite-img" src="assets/Card front.jpg" alt="Kali Puja 2026 invitation card">
+        <div class="invite-carousel" aria-label="Invitation pages">
+          <img id="invite-image" class="invite-img" src="assets/invitation/1.jpeg" alt="Kali Puja 2026 invitation page 1 of 6">
+          <div class="carousel-controls">
+            <button class="carousel-button" id="invite-previous" type="button" aria-label="Previous invitation page">Previous</button>
+            <span id="invite-page" aria-live="polite">1 / 6</span>
+            <button class="carousel-button" id="invite-next" type="button" aria-label="Next invitation page">Next</button>
+          </div>
+        </div>
         <a class="btn primary invitation-download" href="assets/invitation/Asha%20Nagar%20Kalimata%20Mandal%20Invitation%202026.pdf" download="Asha-Nagar-Kalimata-Mandal-Invitation-2026.pdf">⬇ Download Invitation PDF</a>
       </div>
     </section>
@@ -86,5 +93,25 @@ Our mission is to preserve our traditions, strengthen community bonds, and sprea
     <div>Asha Nagar Kalimata Mandal</div>
     <div class="footer-blessing">🙏 जय माँ काली · জয় মা কালী 🙏</div>
   </footer>
+  <script>
+    const invitationImages = Array.from({ length: 6 }, (_, index) => `assets/invitation/${index + 1}.jpeg`);
+    const invitationImage = document.getElementById("invite-image");
+    const invitationPage = document.getElementById("invite-page");
+    let currentInvitationPage = 0;
+
+    function showInvitationPage(index) {
+      currentInvitationPage = (index + invitationImages.length) % invitationImages.length;
+      invitationImage.src = invitationImages[currentInvitationPage];
+      invitationImage.alt = `Kali Puja 2026 invitation page ${currentInvitationPage + 1} of ${invitationImages.length}`;
+      invitationPage.textContent = `${currentInvitationPage + 1} / ${invitationImages.length}`;
+    }
+
+    document.getElementById("invite-previous").addEventListener("click", () => {
+      showInvitationPage(currentInvitationPage - 1);
+    });
+    document.getElementById("invite-next").addEventListener("click", () => {
+      showInvitationPage(currentInvitationPage + 1);
+    });
+  </script>
 </body>
 </html>
