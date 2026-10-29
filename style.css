@@ -212,14 +212,15 @@ h1 {
 .carousel-arrow {
     position: absolute;
     top: 50%;
+    z-index: 1;
     display: grid;
     place-items: center;
     width: 42px;
     height: 56px;
     transform: translateY(-50%);
-    border: 0;
+    border: 1px solid rgba(255, 255, 255, .8);
     border-radius: 10px;
-    background: rgba(101, 8, 12, .8);
+    background: var(--deep);
     color: #fff;
     font: 36px/1 system-ui, -apple-system, Segoe UI, sans-serif;
     cursor: pointer;
@@ -270,10 +271,11 @@ h1 {
 
 .upi-qr {
     display: block;
-    width: 100%;
-    max-width: 240px;
+    width: min(100%, 180px);
+    height: auto;
     margin: 12px auto;
-    border-radius: 8px
+    border-radius: 8px;
+    object-fit: contain
 }
 
 .socials {
@@ -364,5 +366,15 @@ footer {
 
     .puja-title {
         font-size: 25px
+    }
+
+    .carousel-arrow {
+        width: 36px;
+        height: 48px;
+        font-size: 30px
+    }
+
+    .upi-qr {
+        width: min(100%, 150px)
     }
 }
