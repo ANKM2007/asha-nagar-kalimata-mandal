@@ -268,6 +268,14 @@ h1 {
     margin-bottom: 2px
 }
 
+.upi-qr {
+    display: block;
+    width: 100%;
+    max-width: 240px;
+    margin: 12px auto;
+    border-radius: 8px
+}
+
 .socials {
     display: flex;
     justify-content: center;
