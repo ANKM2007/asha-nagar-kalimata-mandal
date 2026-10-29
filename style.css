@@ -195,6 +195,11 @@ h1 {
     box-shadow: 0 8px 24px rgba(0, 0, 0, .18)
 }
 
+.invitation-download {
+    max-width: 260px;
+    margin: 16px auto 0;
+}
+
 .details {
     display: grid;
     gap: 10px;
