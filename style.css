@@ -427,3 +427,18 @@ footer {
         width: min(100%, 150px)
     }
 }
+
+@media(max-width:600px) {
+    .promotion-contact {
+        width: auto;
+        max-width: calc(100vw - 24px);
+        min-height: 48px;
+        height: auto;
+        padding-right: 12px
+    }
+
+    .promotion-tooltip {
+        max-width: calc(100vw - 84px);
+        opacity: 1
+    }
+}
