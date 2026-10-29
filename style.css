@@ -257,10 +257,12 @@ h1 {
 }
 
 .detail {
+    min-width: 0;
     padding: 13px;
     border-radius: 12px;
     background: #fff7df;
-    border-left: 4px solid var(--gold)
+    border-left: 4px solid var(--gold);
+    overflow-wrap: anywhere
 }
 
 .detail strong {
