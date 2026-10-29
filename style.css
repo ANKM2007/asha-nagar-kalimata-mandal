@@ -191,6 +191,12 @@ h1 {
     margin: 12px auto 0
 }
 
+.invite-image-container {
+    position: relative;
+    touch-action: pan-y;
+    user-select: none
+}
+
 .invite-img {
     display: block;
     width: 100%;
@@ -199,26 +205,40 @@ h1 {
 }
 
 .carousel-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
     margin-top: 12px;
     font-family: system-ui, -apple-system, Segoe UI, sans-serif
 }
 
-.carousel-button {
-    padding: 8px 14px;
-    border: 1px solid rgba(101, 8, 12, .25);
-    border-radius: 8px;
-    background: var(--deep);
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 56px;
+    transform: translateY(-50%);
+    border: 0;
+    border-radius: 10px;
+    background: rgba(101, 8, 12, .8);
     color: #fff;
-    font: inherit;
-    font-weight: 700;
-    cursor: pointer
+    font: 36px/1 system-ui, -apple-system, Segoe UI, sans-serif;
+    cursor: pointer;
+    transition: background-color .2s ease
 }
 
-.carousel-button:focus-visible {
+.carousel-arrow:hover {
+    background: var(--deep)
+}
+
+.carousel-arrow-previous {
+    left: 10px
+}
+
+.carousel-arrow-next {
+    right: 10px
+}
+
+.carousel-arrow:focus-visible {
     outline: 3px solid var(--gold);
     outline-offset: 3px
 }

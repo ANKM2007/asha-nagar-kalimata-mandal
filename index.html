@@ -31,11 +31,13 @@
         <h2>Invitation</h2>
         <p class="muted">Join us in celebrating Maa Kali Puja with devotion, culture and togetherness.</p>
         <div class="invite-carousel" aria-label="Invitation pages">
-          <img id="invite-image" class="invite-img" src="assets/invitation/1.jpeg" alt="Kali Puja 2026 invitation page 1 of 6">
+          <div class="invite-image-container">
+            <img id="invite-image" class="invite-img" src="assets/invitation/1.jpeg" alt="Kali Puja 2026 invitation page 1 of 6">
+            <button class="carousel-arrow carousel-arrow-previous" id="invite-previous" type="button" aria-label="Previous invitation page">‹</button>
+            <button class="carousel-arrow carousel-arrow-next" id="invite-next" type="button" aria-label="Next invitation page">›</button>
+          </div>
           <div class="carousel-controls">
-            <button class="carousel-button" id="invite-previous" type="button" aria-label="Previous invitation page">Previous</button>
             <span id="invite-page" aria-live="polite">1 / 6</span>
-            <button class="carousel-button" id="invite-next" type="button" aria-label="Next invitation page">Next</button>
           </div>
         </div>
         <a class="btn primary invitation-download" href="assets/invitation/Asha%20Nagar%20Kalimata%20Mandal%20Invitation%202026.pdf" download="Asha-Nagar-Kalimata-Mandal-Invitation-2026.pdf">⬇ Download Invitation PDF</a>
@@ -111,6 +113,34 @@ Our mission is to preserve our traditions, strengthen community bonds, and sprea
     });
     document.getElementById("invite-next").addEventListener("click", () => {
       showInvitationPage(currentInvitationPage + 1);
+    });
+
+    const invitationCarousel = document.querySelector(".invite-image-container");
+    let swipeStartX = null;
+
+    invitationCarousel.addEventListener("pointerdown", event => {
+      if (event.target.closest(".carousel-arrow")) {
+        return;
+      }
+
+      swipeStartX = event.clientX;
+    });
+
+    invitationCarousel.addEventListener("pointerup", event => {
+      if (swipeStartX === null) {
+        return;
+      }
+
+      const swipeDistance = event.clientX - swipeStartX;
+      swipeStartX = null;
+
+      if (Math.abs(swipeDistance) >= 50) {
+        showInvitationPage(currentInvitationPage + (swipeDistance < 0 ? 1 : -1));
+      }
+    });
+
+    invitationCarousel.addEventListener("pointercancel", () => {
+      swipeStartX = null;
     });
   </script>
 </body>
